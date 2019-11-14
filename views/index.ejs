@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <title>btcgamble</title>
+
+    <style>
+      body {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        /* bring your own prefixes */
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="container"
+      style="background-color:red;min-width: 400px;padding:50px;max-width: 400px;"
+    >
+      <div class="row">
+        <div class="col">
+          <h2>FlipCoin</h2>
+        </div>
+        <div class="col">
+          <div class="row">account:&nbsp;<span id="accountText"></span></div>
+          <div class="row">
+            balance:&nbsp;<span id="bitsText"></span>&nbsp;bits
+          </div>
+          <div class="row">
+            <a href="/api/logout" style="color: black;">logout</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="padding:10px">
+        <div class="col">
+          <!-- <div class="form-group"> -->
+          <input
+            type="number"
+            class="form-control"
+            id="betinp"
+            placeholder="Bet (bits)"
+          />
+          <!-- </div> -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="btn-group">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input
+                  type="radio"
+                  name="Heads"
+                  id="headsbtn"
+                  autocomplete="off"
+                  checked
+                />
+                Heads
+              </label>
+              <label class="btn btn-secondary">
+                <input
+                  type="radio"
+                  name="Tails"
+                  id="tailsbtn"
+                  autocomplete="off"
+                />
+                Tails
+              </label>
+            </div>
+            <!-- <button type="submit" class="btn btn-primary">Flip</button> -->
+          </div>
+        </div>
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary form-control"
+            id="flipbtn"
+          >
+            Flip
+          </button>
+        </div>
+      </div>
+      <div id="info" style="text-align: center; padding-top:10px;"></div>
+      <div
+        id="verify"
+        style="text-align: center;font-size: 10px;overflow-wrap:break-word;"
+      ></div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
