@@ -162,7 +162,7 @@ app.post("/api/flip", checkAuth, (req, res) => {
         let updatedNonce = user["nonce"] + 1;
         let updatedBits = user["bits"] - parseInt(betAmount);
 
-        if (winner) updatedBits = updatedBits + parseInt(betAmount) * 1.98;
+        updatedBits = Math.round(updatedBits * 1e12) / 1e12;
 
         user.updateOne({ nonce: updatedNonce, bits: updatedBits }).exec();
 
