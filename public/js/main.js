@@ -34,8 +34,8 @@ $(document).ready(async function($) {
         }
 
         $("#bitsText").text(parseFloat(flipResult["info"]["updatedBits"]));
-        $("#verify").text(
-          `Secret ${flipResult["info"]["secret"]} ClientId ${flipResult["info"]["clientId"]} Nonce ${flipResult["info"]["nonce"]}`
+        $("#verifytext").text(
+          `Secret ${flipResult["info"]["secret"]} ClientId ${flipResult["info"]["clientId"]} Nonce ${flipResult["info"]["nonce"]}  Result ${flipResult["info"]["result"]}`
         );
       } else {
         $("#info").text("Error");
@@ -90,7 +90,6 @@ const showFair = () => {
 
 const showAdvanced = () => {
   //#advanced
-  console.log("showiung advanced");
 
   $("#advanced").css("display") === "block"
     ? $("#advanced").css("display", "none")
