@@ -30,8 +30,8 @@
   </head>
   <body>
     <div
-      class="container"
-      style="background-color:red;width: 400px;padding:50px;"
+      class="container bg-light"
+      style="width: 400px;padding:50px;"
     >
       <div class="row">
         <div class="col">
@@ -42,15 +42,14 @@
           <div class="row">
             balance:&nbsp;<span id="bitsText">loading..</span>&nbsp;bits
           </div>
-          <div class="row" style="text-align: center">
-            <div class="col"><a href="#" style="color: black;">deposit</a></div>
-            <div class="col"><a href="#" style="color: black;">withdraw</a></div>
-            <div class="col"><a href="/api/logout" style="color: black;">logout</a></div>
-            
-          </div>
         </div>
       </div>
-
+      <div class="row" style="text-align: center">
+          <div class="col"><a href="#" style="color: black;">deposit</a></div>
+          <div class="col"><a href="#" style="color: black;">withdraw</a></div>
+          <div class="col"><a href="/api/logout" style="color: black;">logout</a></div>
+          
+        </div>
       <div class="row" style="padding:10px">
         <div class="col">
           <input
@@ -108,9 +107,12 @@
       <div
         id="verify"
         style="text-align: center;font-size: 10px;overflow-wrap:break-word;display: none;">
-        Waiting for flip... </div>
+        <hr/>
+        <span id="verifytext">Waiting for flip...</span>
+      </div>
 
       <div id="advanced" style="display: none">
+        <hr/>
         <div class="form-group">
           <h3>Advanced</h3>
         </div>
