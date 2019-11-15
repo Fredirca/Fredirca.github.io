@@ -72,7 +72,6 @@ passport.use(
 app.use(
   session({
     secret: process.env.EXPRESS_SALT,
-    // cookie: { maxAge: 60000 },
     resave: false,
     saveUninitialized: false
   })
