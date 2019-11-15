@@ -31,33 +31,34 @@
   <body>
     <div
       class="container"
-      style="background-color:red;min-width: 400px;padding:50px;max-width: 400px;"
+      style="background-color:red;width: 400px;padding:50px;"
     >
       <div class="row">
         <div class="col">
           <h2>FlipCoin</h2>
         </div>
         <div class="col">
-          <div class="row">account:&nbsp;<span id="accountText"></span></div>
+          <div class="row">account:&nbsp;<span id="accountText">loading..</span></div>
           <div class="row">
-            balance:&nbsp;<span id="bitsText"></span>&nbsp;bits
+            balance:&nbsp;<span id="bitsText">loading..</span>&nbsp;bits
           </div>
-          <div class="row">
-            <a href="/api/logout" style="color: black;">logout</a>
+          <div class="row" style="text-align: center">
+            <div class="col"><a href="#" style="color: black;">deposit</a></div>
+            <div class="col"><a href="#" style="color: black;">withdraw</a></div>
+            <div class="col"><a href="/api/logout" style="color: black;">logout</a></div>
+            
           </div>
         </div>
       </div>
 
       <div class="row" style="padding:10px">
         <div class="col">
-          <!-- <div class="form-group"> -->
           <input
             type="number"
             class="form-control"
             id="betinp"
             placeholder="Bet (bits)"
           />
-          <!-- </div> -->
         </div>
       </div>
       <div class="row">
@@ -97,11 +98,39 @@
           </button>
         </div>
       </div>
-      <div id="info" style="text-align: center; padding-top:10px;"></div>
+      <div id="info" style="text-align: center; padding-top:10px;">&nbsp;</div>
+
+      <div class="row" style="text-align: center;">
+          <div class="col"><a href="#" onclick="showFair()">probability fair</a></div>
+          <div class="col"><a href="#" onclick="showAdvanced()">advanced</a></div>
+        </div>
+
       <div
         id="verify"
-        style="text-align: center;font-size: 10px;overflow-wrap:break-word;"
-      ></div>
+        style="text-align: center;font-size: 10px;overflow-wrap:break-word;display: none;">
+        Waiting for flip... </div>
+
+      <div id="advanced" style="display: none">
+        <div class="form-group">
+          <h3>Advanced</h3>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Change client id</label>
+         
+          <input
+            type="text"
+            class="form-control"
+            id="clientinp"
+            placeholder="Client ID"
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary form-control"
+          id="saveclient"
+        >
+          Save
+        </button>
     </div>
 
     <!-- Optional JavaScript -->
