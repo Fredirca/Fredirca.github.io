@@ -18,7 +18,7 @@ const uri = `mongodb+srv://root:${process.env.DB_PASSWORD}@cluster0-f1lpy.mongod
 const User = require("./models/User");
 
 //Connenct to db
-mongoose.connect(uri, { useNewUrlParser: true });
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
 
 app.set("view engine", "ejs");
 
@@ -131,6 +131,37 @@ app.get("/", (req, res) => {
   return res.sendFile(__dirname + "/views/auth.html");
 });
 
+app.post("/api/clientid", checkAuth, (req, res) => {
+  User.findOne(
+    {
+      discordId: req.user.discordId
+    },
+    (err, user) => {
+      if (err) return res.json({ status: "error" });
+      if (user) {
+        const clientId = req.body["clientId"];
+
+        //Not required...
+        if (!clientId) {
+          let newClientId = `${user["discordId"]}`;
+
+          user.updateOne({ clientId: newClientId }).exec();
+
+          return res.json({ status: "success" });
+        } else {
+          let newClientId = `${user["discordId"]}_${clientId}`;
+
+          user.updateOne({ clientId: newClientId }).exec();
+
+          return res.json({ status: "success" });
+        }
+      } else {
+        return res.json({ status: "error" });
+      }
+    }
+  );
+});
+
 app.post("/api/flip", checkAuth, (req, res) => {
   User.findOne(
     {
@@ -148,10 +179,12 @@ app.post("/api/flip", checkAuth, (req, res) => {
         //Error handling
         if (!coinSides.includes(choice)) return res.json({ status: "error" });
         if (!betAmount) return res.json({ status: "error" });
-        if (isNaN(parseInt(betAmount))) return res.json({ status: "error" });
+        if (isNaN(parseFloat(betAmount))) return res.json({ status: "error" });
 
-        if (parseInt(betAmount) > user["bits"])
+        if (parseFloat(betAmount) > user["bits"])
           return res.json({ status: "error" });
+
+        if (parseFloat(betAmount) <= 0) return res.json({ status: "error" });
 
         const clientId = user["clientId"];
         const secret = getSecret();
@@ -160,7 +193,9 @@ app.post("/api/flip", checkAuth, (req, res) => {
         const winner = result === choice ? true : false;
 
         let updatedNonce = user["nonce"] + 1;
-        let updatedBits = user["bits"] - parseInt(betAmount);
+        let updatedBits = user["bits"] - parseFloat(betAmount);
+
+        if (winner) updatedBits = updatedBits + parseFloat(betAmount) * 1.98;
 
         updatedBits = Math.round(updatedBits * 1e12) / 1e12;
 
