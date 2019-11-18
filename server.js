@@ -20,8 +20,6 @@ const User = require("./models/User");
 //Connenct to db
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
 
-app.set("view engine", "ejs");
-
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
@@ -124,7 +122,7 @@ app.get("/api/logout", (req, res) => {
 
 app.get("/", (req, res) => {
   if (req.isAuthenticated()) {
-    return res.render("index.ejs");
+    return res.sendFile(__dirname + "/views/index.html");
   }
 
   return res.sendFile(__dirname + "/views/auth.html");
