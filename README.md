@@ -31,4 +31,5 @@ DB_PASSWORD=    #mongodb password
 ```
 ## Screenshots
 ![1](https://i.imgur.com/VAhRsqD.png)
-![2](https://i.imgur.com/86X8kWS.png)
+![2](https://i.imgur.com/3zR3XkG.png)
+![3](https://i.imgur.com/uWQX9wk.png)
