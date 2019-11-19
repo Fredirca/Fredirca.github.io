@@ -2,6 +2,10 @@
 
 Flipcoin is a proof of concept coin flip gambling site written in NodeJS. The main goal of this site is to provide the user with a probability fair system which allows the user to verify the integrity of each game they play. To verify the game users may use this [script](https://repl.it/repls/SkeletalSquigglyClasses).
 
+### TODO:
+
+ - Implement history feature so players can view past games/hashes associated with them.
+
 ### Installation
 Setup:
 
