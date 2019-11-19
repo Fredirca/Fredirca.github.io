@@ -35,7 +35,7 @@ $(document).ready(async function($) {
 
         $("#bitsText").text(parseFloat(flipResult["info"]["updatedBits"]));
         $("#verifytext").text(
-          `Secret ${flipResult["info"]["secret"]} ClientId ${flipResult["info"]["clientId"]} Nonce ${flipResult["info"]["nonce"]}  Result ${flipResult["info"]["result"]}`
+          `ClientId: ${flipResult["info"]["clientId"]} Nonce: ${flipResult["info"]["nonce"]}  Result: ${flipResult["info"]["result"]}`
         );
       } else {
         $("#info").text("Error");
@@ -63,6 +63,7 @@ $(document).ready(async function($) {
   });
 
   loadDb();
+  loadDailySecret();
 });
 
 const loadDb = async () => {
@@ -76,6 +77,17 @@ const loadDb = async () => {
   );
   console.log(rawResult);
 };
+
+const loadDailySecret = async () => {
+  const rawResponse = await fetch("/api/secrets");
+  const rawResult = await rawResponse.json();
+
+  if(rawResult.length === 0) {
+    $("#dailysecrettext").text(`Yesterdays Server Seed: please wait for yesterday's server seed to be available.`)
+  } else {
+    $("#dailysecrettext").text(`Yesterdays Server Seed: ${rawResult[0]["secret"]}`)
+  }
+}
 
 const money_round = num => {
   return Math.round(num * 1e12) / 1e12;
