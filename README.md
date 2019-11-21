@@ -5,6 +5,7 @@ Flipcoin is a proof of concept coin flip gambling site written in NodeJS. The ma
 ### TODO:
 
  - Implement history feature so players can view past games/hashes associated with them.
+ - Add modal to see all past "daily secrets"
 
 ### Installation
 Setup:
